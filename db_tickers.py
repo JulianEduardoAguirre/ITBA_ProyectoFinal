@@ -141,13 +141,13 @@ def insertar_datos(mi_dicc, cursor, conexion):
     conexion.commit()
 
 #Consulta los datos de un ticker en particular, para el periodo especificado
-def consultar_datos(nombre_ticker, fecha_inicio, fecha_cierre, cursor):
+def consultar_datos(ticker, fecha_inicio, fecha_cierre, cursor):
     '''
     Consulta todos los datos de un ticker, para un periodo de tiempo ingresados por el usuario.
     Retorna un diccionario con los datos en caso que la consulta sea correcta. En caso contrario, retorna None
     '''
     
-    id = ticker_consultar_id(nombre_ticker, cursor)
+    id = ticker_consultar_id(ticker, cursor)
     sql_consultar_entrada = f'''
                 SELECT fecha, open, close, high, low
                 FROM datos

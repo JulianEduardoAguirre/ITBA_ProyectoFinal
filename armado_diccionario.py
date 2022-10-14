@@ -1,19 +1,5 @@
 import json
 import datetime
-
-def extraer_datos_archivo(nombre_archivo):
-    '''
-    Función para leer un archivo JSON
-    Retorna datos.
-    '''
-    
-    try:
-        archivo = open(nombre_archivo)
-        datos = json.load(archivo)
-        archivo.close
-        return datos
-    except:
-        print("Error al abrir el archivo.")
         
 
 def crear_diccionario_desde_json(datos):
@@ -81,3 +67,18 @@ def datos_para_dataframe(datos_ddbb):
     
     return diccionario_datos
 
+
+#Para pruebas locales
+def extraer_datos_archivo(nombre_archivo):
+    '''
+    Función para leer un archivo JSON
+    Retorna datos.
+    '''
+    
+    try:
+        archivo = open(nombre_archivo)
+        datos = json.load(archivo)
+        archivo.close
+        return datos
+    except:
+        print("Error al abrir el archivo.")

@@ -14,15 +14,6 @@ def ingreso_ticker(api_key):
     return ticker
 
 
-def tachar_palabras(palabra):
-    """Toma una palabra y genera la misma con el efecto de tachado.
-    No se muestra correctamente en algunos entornos, por lo que omite su uso.
-    """
-    palabra_tachada = ''
-    for c in palabra:
-        palabra_tachada = '\u0336' + palabra_tachada + c + '\u0336'
-    return palabra_tachada
-
 def agregar_deshabilitado(palabra):
     """Agrega la palabra deshabilitado adelante de una palabra
     """
@@ -142,3 +133,13 @@ def menu_principal():
                 key_correcta = ca.prueba_api_key(api_key)
             else:
                 print("Fin del programa.\n")
+
+#No usada
+def tachar_palabras(palabra):
+    """Toma una palabra y genera la misma con el efecto de tachado.
+    No se muestra correctamente en algunos entornos, por lo que omite su uso.
+    """
+    palabra_tachada = ''
+    for c in palabra:
+        palabra_tachada = '\u0336' + palabra_tachada + c + '\u0336'
+    return palabra_tachada
