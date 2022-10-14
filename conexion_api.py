@@ -83,11 +83,11 @@ def prueba_api_key(api_key):
 
     valor = rs.get(url).json()
     if valor.get("error", '-1') == "Unknown API Key":
-        print("API_KEY Incorrecta")
-        print("Debe dirigirse a 'https://polygon.io/stocks' para generar una nueva.")
+        print("\nAPI_KEY Incorrecta")
+        print("Debe dirigirse a 'https://polygon.io/stocks' para generar una nueva.\n")
         #Es importante crear una cuenta en 'https://polygon.io/' y dirigirse a
         # 'https://polygon.io/dashboard/api-keys' para generar una nueva API_KEY 
         return False
     else:
-        print("API_KEY correcta")
+        print("\nAPI_KEY correcta")
         return True

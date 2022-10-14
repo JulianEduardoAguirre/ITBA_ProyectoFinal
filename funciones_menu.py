@@ -15,11 +15,19 @@ def ingreso_ticker(api_key):
 
 
 def tachar_palabras(palabra):
-    "Toma una palabra y genera la misma con el efecto de tachado."
+    """Toma una palabra y genera la misma con el efecto de tachado.
+    No se muestra correctamente en algunos entornos, por lo que omite su uso.
+    """
     palabra_tachada = ''
     for c in palabra:
         palabra_tachada = '\u0336' + palabra_tachada + c + '\u0336'
     return palabra_tachada
+
+def agregar_deshabilitado(palabra):
+    """Agrega la palabra deshabilitado adelante de una palabra
+    """
+
+    return "(deshabilitado) " + palabra
 
 
 def ingreso_fechas():
@@ -61,15 +69,15 @@ def menu_principal():
     print(guiones + " Trabajo Final ITBA " + guiones)
 
     while opcion != "x":
-        print("MENÚ PRINCIPAL\n")
+        print("\n\t\tMENÚ PRINCIPAL\n")
         
         #GENERAR AQUÍ LAS OPCIONES CON STRIKE
         opcion_a = "Actualización de datos"
         opcion_b = "Visualización de datos"
         if key_correcta:
-            menu = f"\nIngrese una opción.\n\na) {opcion_a}\nb) {opcion_b}\nc) Ingresas clave (API_KEY)\nx) Finalizar\n\n"          
+            menu = f"\nIngrese una opción.\n\na) {opcion_a}\nb) {opcion_b}\nc) Ingresar clave (API_KEY)\nx) Finalizar\n\n"          
         else:
-            menu = f"\nIngrese una opción.\n\na) {tachar_palabras(opcion_a)}\nb) {tachar_palabras(opcion_b)}\nc) Ingresar clave (API_KEY)\nx) Finalizar\n\n"
+            menu = f"\nIngrese una opción.\n\na) {agregar_deshabilitado(opcion_a)}\nb) {agregar_deshabilitado(opcion_b)}\nc) Ingresar clave (API_KEY)\nx) Finalizar\n\n"
         
         opcion = input(menu).lower()
 
@@ -118,7 +126,7 @@ def menu_principal():
                                 datos_df =  gf.generar_dataframe(datos_para_df)
                                 print("\nPreparando gráfico\n")
                                 print("Recuerde cerrar la figura para continuar...\n")
-                                gf.graficar_candlesticks(datos_df)                            
+                                gf.graficar_candlesticks(ticker, datos_df)                            
                             else:
                                 print("\nNo se hallaron registros en la base de datos.")
                                 print(f"\n\tTicker: '{ticker}'\n\tDesde {fecha_a} hasta {fecha_b}\n")
@@ -129,8 +137,8 @@ def menu_principal():
                 key_correcta = False
                 #Es importante crear una cuenta en 'https://polygon.io/' y dirigirse a
                 # 'https://polygon.io/dashboard/api-keys' para generar una nueva API_KEY 
-                while not key_correcta: 
-                    api_key = input("Ingrese su nueva clave (API_KEY): \n")
-                    key_correcta = ca.prueba_api_key(api_key)
+
+                api_key = input("Ingrese su nueva clave (API_KEY): \n")
+                key_correcta = ca.prueba_api_key(api_key)
             else:
                 print("Fin del programa.\n")

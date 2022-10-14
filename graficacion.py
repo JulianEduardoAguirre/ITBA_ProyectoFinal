@@ -14,7 +14,7 @@ def generar_dataframe(datos_df):
     return mi_dataframe
 
 
-def graficar_candlesticks(datos_dataframe):
+def graficar_candlesticks(ticker, datos_dataframe):
     '''
     Realiza el gráfico de velas japonesas con los datos recibidos.
     '''
@@ -39,5 +39,6 @@ def graficar_candlesticks(datos_dataframe):
         plt.bar(datos_dataframe.index[i], datos_dataframe.high[i] - datos_dataframe.close[i] , width2, bottom = datos_dataframe.close[i], color = col)
         plt.bar(datos_dataframe.index[i], datos_dataframe.low[i] - datos_dataframe.open[i], width2, bottom = datos_dataframe.open[i], color = col)
 
+    plt.title(ticker)
     plt.xticks(rotation=45, ha='right')
     plt.show()
